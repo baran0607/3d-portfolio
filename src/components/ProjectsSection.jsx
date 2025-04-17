@@ -10,7 +10,7 @@ const projects = [
     category: "3D",
     technologies: ["React", "Spring Boot", "MySQL"],
     link: "https://example.com/project1",
-    github: "https://github.com/johndoe/project1"
+    github: "https://github.com/baran0607/3d-portfolio"
   },
   {
     id: 2,
