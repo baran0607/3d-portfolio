@@ -31,7 +31,7 @@ const AboutSection = () => {
             className="about-text"
           >
             <p>
-              Hi there! I'm Baran, a passionate full-stack developer with 1+ years of experience
+              Hi there! I'm Baran, a passionate full-stack developer with 5 years of experience
               building web applications and interactive experiences.
             </p>
             <p>
