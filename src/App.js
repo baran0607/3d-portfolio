@@ -191,11 +191,11 @@ import './App.css';
 import { TypeAnimation } from 'react-type-animation'
 
 // Preload the model
-useGLTF.preload('/models/laptop.glb');
+useGLTF.preload(`${process.env.PUBLIC_URL}/models/laptop.glb`);
 
 function FloatingLaptop({ scrollY }) {
   const laptop = useRef();
-  const { scene, error } = useGLTF('/models/laptop.glb');
+  const { scene, error } = useGLTF(`${process.env.PUBLIC_URL}/models/laptop.glb`);
 
   useEffect(() => {
     if (error) console.error("Error loading model:", error);

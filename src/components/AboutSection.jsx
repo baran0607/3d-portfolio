@@ -20,7 +20,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="about-image"
           >
-            <img src="/images/profile.png" alt="John Doe" />
+            <img src={`${process.env.PUBLIC_URL}/images/profile.png`} alt="John Doe" />
           </motion.div>
           
           <motion.div
@@ -64,7 +64,7 @@ const AboutSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="download-cv"
-              href="/files/baranidharan-resume.pdf"
+              href={`${process.env.PUBLIC_URL}/files/baranidharan-resume.pdf`}
               download
             >
               Download CV
