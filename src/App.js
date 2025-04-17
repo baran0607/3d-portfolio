@@ -316,31 +316,31 @@ function App() {
               {/* <h2>Full Stack Developer</h2>
               <p>Crafting digital experiences with code and creativity</p> */}
               <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="type-animation"
-                >
-                  <TypeAnimation
-                    sequence={[
-                      'Full Stack Developer',
-                      1500,
-                      'UI/UX Enthusiast',
-                      1500,
-                      'Creative Coder',
-                      1500,
-                      'Problem Solver',
-                      1500,
-                      'Crafting digital experiences with code and creativity',
-                      1500
-                    ]}
-                    wrapper="h2"
-                    cursor={true}
-                    repeat={Infinity}
-                    speed={10}
-                    deletionSpeed={70}
-                  />
-                </motion.div>
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 0.8 }}
+                        className="type-animation"
+                      >
+                        <TypeAnimation
+                          sequence={[
+                            'Full Stack Developer',
+                            1500,
+                            'UI/UX Enthusiast',
+                            1500,
+                            'Creative Coder',
+                            1500,
+                            'Problem Solver',
+                            1500,
+                            'Crafting digital experiences with code and creativity',
+                            1500
+                          ]}
+                          wrapper="h2"
+                          cursor={true}
+                          repeat={Infinity}
+                          speed={10}
+                          deletionSpeed={70}
+                        />
+                      </motion.div>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
