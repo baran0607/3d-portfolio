@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = ({ currentSection }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -12,9 +21,12 @@ const Navbar = ({ currentSection }) => {
     { id: 'contact', label: 'Contact' }
   ];
   
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    setMobileMenuOpen(false);
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
   };
   
   return (
@@ -22,22 +34,22 @@ const Navbar = ({ currentSection }) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className="navbar"
+      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
     >
       <div className="nav-content">
         <div className="logo" onClick={() => scrollToSection('home')}>
           <span className="logo-text">BD</span>
         </div>
         
-        <div className="menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          <div className={`menu-icon ${mobileMenuOpen ? 'open' : ''}`}>
+        <div className="menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <div className={`menu-icon ${isMobileMenuOpen ? 'open' : ''}`}>
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
         
-        <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+        <div className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           {navItems.map((item) => (
             <motion.div
               key={item.id}

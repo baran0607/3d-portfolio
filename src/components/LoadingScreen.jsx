@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { motion } from 'framer-motion';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ theme }) => {
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
+    const interval = setInterval(() => {
+      setLoadingProgress(prev => {
+        const newProgress = prev + 1;
+        if (newProgress >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return newProgress;
+      });
+    }, 30);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="loading-screen">
+    <div className={`loading-screen ${theme}-theme`}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,7 +55,8 @@ const LoadingScreen = () => {
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ delay: 0.8, duration: 2.5 }}
-          className="loading-bar"
+          className="loading-bar" 
+          style={{ width: `${loadingProgress}%` }}
         />
       </motion.div>
     </div>

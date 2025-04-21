@@ -177,7 +177,202 @@
 
 
 
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+// import React, { useState, useEffect, useRef, Suspense } from 'react';
+// import { Canvas } from '@react-three/fiber';
+// import { OrbitControls, Stars, useGLTF, Html } from '@react-three/drei';
+// import { motion } from 'framer-motion';
+// import Navbar from './components/Navbar';
+// import AboutSection from './components/AboutSection';
+// import ProjectsSection from './components/ProjectsSection';
+// import SkillsSection from './components/SkillsSection';
+// import ContactSection from './components/ContactSection';
+// import LoadingScreen from './components/LoadingScreen';
+// import './App.css';
+// import { TypeAnimation } from 'react-type-animation'
+
+// // Preload the model
+// useGLTF.preload(`${process.env.PUBLIC_URL}/models/laptop.glb`);
+
+// function FloatingLaptop({ scrollY }) {
+//   const laptop = useRef();
+//   const { scene, error } = useGLTF(`${process.env.PUBLIC_URL}/models/laptop.glb`);
+
+//   useEffect(() => {
+//     if (error) console.error("Error loading model:", error);
+//   }, [error]);
+
+//   useEffect(() => {
+//     if (laptop.current) {
+//       laptop.current.rotation.y = scrollY * 0.01;
+//       laptop.current.position.y = Math.sin(scrollY * 0.002) * 0.5;
+//     }
+//   }, [scrollY]);
+
+//   if (error) return null;
+
+//   return (
+//     <primitive 
+//       ref={laptop} 
+//       object={scene} 
+//       position={[0, 0, 0]} 
+//       scale={1.5} 
+//       castShadow 
+//       receiveShadow
+//     />
+//   );
+// }
+
+// function Scene({ scrollY }) {
+//   return (
+//     <>
+//       <ambientLight intensity={1} />
+//       <pointLight position={[10, 10, 10]} intensity={1} castShadow />
+//       <spotLight
+//         position={[10, 10, 10]}
+//         angle={0.15}
+//         penumbra={1}
+//         intensity={1}
+//         castShadow
+//       />
+//       <Suspense fallback={<Html center><div className="loading-model">Loading 3D Model...</div></Html>}>
+//         <FloatingLaptop scrollY={scrollY} />
+//         <Stars radius={100} depth={50} count={5000} factor={4} fade speed={1} />
+//       </Suspense>
+//       <OrbitControls
+//         enableZoom={false}
+//         enablePan={false}
+//         autoRotate
+//         autoRotateSpeed={0.5}
+//         maxPolarAngle={Math.PI / 2}
+//         minPolarAngle={Math.PI / 3}
+//       />
+//     </>
+//   );
+// }
+
+// function App() {
+//   const [loading, setLoading] = useState(true);
+//   const [currentSection, setCurrentSection] = useState('home');
+//   const [scrollY, setScrollY] = useState(0);
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => setLoading(false), 3500);
+
+//     const handleScroll = () => {
+//       setScrollY(window.scrollY);
+
+//       const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+//       const scrollPosition = window.scrollY + 100;
+
+//       for (const section of sections) {
+//         const element = document.getElementById(section);
+//         if (!element) continue;
+
+//         const offsetTop = element.offsetTop;
+//         const offsetHeight = element.offsetHeight;
+
+//         if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+//           setCurrentSection(section);
+//           break;
+//         }
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       clearTimeout(timer);
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   if (loading) {
+//     return <LoadingScreen />;
+//   }
+
+//   return (
+//     <div className="app">
+//       <div className="canvas-container">
+//         <Canvas 
+//           shadows 
+//           camera={{ position: [0, 0, 5], fov: 75 }}
+//           gl={{ antialias: true }}
+//         >
+//           <Scene scrollY={scrollY} />
+//         </Canvas>
+//       </div>
+
+//       <div className="content">
+//         <Navbar currentSection={currentSection} />
+
+//         <main>
+//           <section id="home" className="hero-section">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               className="hero-content"
+//             >
+//               <h1>Baranidharan</h1>
+//               {/* <h2>Full Stack Developer</h2>
+//               <p>Crafting digital experiences with code and creativity</p> */}
+//               <motion.div
+//                         initial={{ opacity: 0 }}
+//                         animate={{ opacity: 1 }}
+//                         transition={{ delay: 0.4, duration: 0.8 }}
+//                         className="type-animation"
+//                       >
+//                         <TypeAnimation
+//                           sequence={[
+//                             'Full Stack Developer',
+//                             1500,
+//                             'UI/UX Enthusiast',
+//                             1500,
+//                             'Creative Coder',
+//                             1500,
+//                             'Problem Solver',
+//                             1500,
+//                             'Crafting digital experiences with code and creativity',
+//                             1500
+//                           ]}
+//                           wrapper="h2"
+//                           cursor={true}
+//                           repeat={Infinity}
+//                           speed={10}
+//                           deletionSpeed={70}
+//                         />
+//                       </motion.div>
+
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className="cta-button"
+//                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+//               >
+//                 Get In Touch
+//               </motion.button>
+//             </motion.div>
+//           </section>
+
+//           <AboutSection />
+//           <ProjectsSection />
+//           <SkillsSection />
+//           <ContactSection />
+//         </main>
+
+//         <footer>
+//           <p>&copy; {new Date().getFullYear()} Baranidharan. All rights reserved.</p>
+//         </footer>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+import React, { useState, useEffect, useRef, Suspense, createContext } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars, useGLTF, Html } from '@react-three/drei';
 import { motion } from 'framer-motion';
@@ -187,8 +382,12 @@ import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import ContactSection from './components/ContactSection';
 import LoadingScreen from './components/LoadingScreen';
+import ThemeToggle from './components/ThemeToggle';
 import './App.css';
-import { TypeAnimation } from 'react-type-animation'
+import { TypeAnimation } from 'react-type-animation';
+
+// Create theme context
+export const ThemeContext = createContext();
 
 // Preload the model
 useGLTF.preload(`${process.env.PUBLIC_URL}/models/laptop.glb`);
@@ -222,16 +421,16 @@ function FloatingLaptop({ scrollY }) {
   );
 }
 
-function Scene({ scrollY }) {
+function Scene({ scrollY, theme }) {
   return (
     <>
-      <ambientLight intensity={1} />
-      <pointLight position={[10, 10, 10]} intensity={1} castShadow />
+      <ambientLight intensity={theme === 'light' ? 1.5 : 1} />
+      <pointLight position={[10, 10, 10]} intensity={theme === 'light' ? 1.2 : 1} castShadow />
       <spotLight
         position={[10, 10, 10]}
         angle={0.15}
         penumbra={1}
-        intensity={1}
+        intensity={theme === 'light' ? 1.2 : 1}
         castShadow
       />
       <Suspense fallback={<Html center><div className="loading-model">Loading 3D Model...</div></Html>}>
@@ -254,6 +453,22 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [currentSection, setCurrentSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+  const [theme, setTheme] = useState('dark');
+
+  // Initialize theme from localStorage or default to dark
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  // Theme toggle function
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3500);
@@ -286,84 +501,85 @@ function App() {
   }, []);
 
   if (loading) {
-    return <LoadingScreen />;
+    return <LoadingScreen theme={theme} />;
   }
 
   return (
-    <div className="app">
-      <div className="canvas-container">
-        <Canvas 
-          shadows 
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          gl={{ antialias: true }}
-        >
-          <Scene scrollY={scrollY} />
-        </Canvas>
-      </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={`app ${theme}-theme`}>
+        <div className="canvas-container">
+          <Canvas 
+            shadows 
+            camera={{ position: [0, 0, 5], fov: 75 }}
+            gl={{ antialias: true }}
+          >
+            <Scene scrollY={scrollY} theme={theme} />
+          </Canvas>
+        </div>
 
-      <div className="content">
-        <Navbar currentSection={currentSection} />
+        <div className="content">
+          <Navbar currentSection={currentSection} theme={theme} />
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
-        <main>
-          <section id="home" className="hero-section">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="hero-content"
-            >
-              <h1>Baranidharan</h1>
-              {/* <h2>Full Stack Developer</h2>
-              <p>Crafting digital experiences with code and creativity</p> */}
+          <main>
+            <section id="home" className="hero-section">
               <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.8 }}
-                        className="type-animation"
-                      >
-                        <TypeAnimation
-                          sequence={[
-                            'Full Stack Developer',
-                            1500,
-                            'UI/UX Enthusiast',
-                            1500,
-                            'Creative Coder',
-                            1500,
-                            'Problem Solver',
-                            1500,
-                            'Crafting digital experiences with code and creativity',
-                            1500
-                          ]}
-                          wrapper="h2"
-                          cursor={true}
-                          repeat={Infinity}
-                          speed={10}
-                          deletionSpeed={70}
-                        />
-                      </motion.div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="cta-button"
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="hero-content"
               >
-                Get In Touch
-              </motion.button>
-            </motion.div>
-          </section>
+                <h1>Baranidharan</h1>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="type-animation"
+                >
+                  <TypeAnimation
+                    sequence={[
+                      'Full Stack Developer',
+                      1500,
+                      'UI/UX Enthusiast',
+                      1500,
+                      'Creative Coder',
+                      1500,
+                      'Problem Solver',
+                      1500,
+                      'Crafting digital experiences with code and creativity',
+                      1500
+                    ]}
+                    wrapper="h2"
+                    cursor={true}
+                    repeat={Infinity}
+                    speed={10}
+                    deletionSpeed={70}
+                  />
+                </motion.div>
 
-          <AboutSection />
-          <ProjectsSection />
-          <SkillsSection />
-          <ContactSection />
-        </main>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="cta-button"
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Get In Touch
+                </motion.button>
+              </motion.div>
+            </section>
 
-        <footer>
-          <p>&copy; {new Date().getFullYear()} Baranidharan. All rights reserved.</p>
-        </footer>
+            <AboutSection />
+            <ProjectsSection />
+            <SkillsSection />
+            <ContactSection />
+          </main>
+
+          <footer>
+            <p>&copy; {new Date().getFullYear()} Baranidharan. All rights reserved.</p>
+          </footer>
+        </div>
       </div>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
