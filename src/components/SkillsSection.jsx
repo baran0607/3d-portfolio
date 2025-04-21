@@ -27,7 +27,8 @@ const SkillsSection = () => {
       { name: 'Jest', level: 75 },
       { name: 'Figma', level: 80 },
       { name: 'VS Code', level: 95 },
-      { name: 'Postman', level: 85 }
+      { name: 'Postman', level: 85 },
+      { name: 'Prompt Engineer', level: 75 }
     ]
   };
   
@@ -88,7 +89,7 @@ const SkillsSection = () => {
             >
               <div className="skill-info">
                 <h3>{skill.name}</h3>
-                <span>{skill.level}%</span>
+                {/* <span>{skill.level}%</span> */}
               </div>
               <div className="skill-bar">
                 <motion.div

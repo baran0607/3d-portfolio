@@ -42,7 +42,7 @@ const AboutSection = () => {
             <p>
               I specialize in React.js, React Native focusing on creating immersive
               3D experiences and performant web applications. When I'm not coding, you can find
-              me hiking, reading sci-fi novels, or experimenting with new technologies.
+              me hiking,  or experimenting with new technologies.
             </p>
             
             <div className="stats-container">

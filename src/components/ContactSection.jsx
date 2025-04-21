@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -9,31 +10,41 @@ const ContactSection = () => {
     message: ''
   });
   const [formStatus, setFormStatus] = useState(null);
+  const [error, setError] = useState(null);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  };  
   
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      // Reset form status after 3 seconds
-      setTimeout(() => {
-        setFormStatus(null);
-      }, 3000);
-    }, 1500);
+    setError(null);
+
+    // Replace with your EmailJS credentials
+    emailjs.send(
+      'service_qd3sd3j',         
+      'template_u8ma8pv',        
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      },
+      'UQV2rjtzwjRcIKf0g'          
+    )
+    .then(
+      (response) => {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormStatus(null), 3000);
+      },
+      (err) => {
+        setFormStatus('error');
+        setError('Failed to send message. Please try again later.');
+      }
+    );
   };
   
   return (
@@ -220,17 +231,19 @@ const ContactSection = () => {
               >
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
               </motion.button>
-              
+
               {formStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="form-success"
-                >
-                  Message sent successfully!
+                <motion.div className="form-success">
+                  ✅ Message sent! I'll reply soon.
                 </motion.div>
               )}
-            </form>
+              
+              {formStatus === 'error' && (
+              <motion.div className="form-error">
+                ❌ {error || 'Failed to send. Try again.'}
+              </motion.div>
+            )}
+          </form>
           </motion.div>
         </div>
       </motion.div>

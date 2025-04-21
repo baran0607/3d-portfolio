@@ -8,7 +8,7 @@ const projects = [
     description: "A modern portfolio with 3D elements built with React",
     image: `${process.env.PUBLIC_URL}/images/projects/project1.png`,
     category: "3D",
-    technologies: ["React", "Spring Boot", "MySQL"],
+    technologies: ["React.Js", "Three.Js", "Motion Framer"],
     link: "https://example.com/project1",
     github: "https://github.com/baran0607/3d-portfolio"
   },
@@ -18,7 +18,7 @@ const projects = [
     description: "A web application for conducting online exams",
     image: `${process.env.PUBLIC_URL}/images/projects/project2.png`,
     category: "Full-stack",
-    technologies: ["React", "Spring Boot", "Mysql"],
+    technologies: ["React.Js", "Spring Boot", "Mysql"],
     link: "https://example.com/project2",
     github: "https://github.com/johndoe/project2"
   },
@@ -28,7 +28,7 @@ const projects = [
     description: "A mobile application for tracking expenses",
     image: `${process.env.PUBLIC_URL}/images/projects/project3.png`,
     category: "App",
-    technologies: ["React", "Native", "Expo"],
+    technologies: ["ReactNative", "Expo"],
     link: "https://example.com/project3",
     github: "https://github.com/baran0607/tracking"
   },
@@ -38,7 +38,7 @@ const projects = [
     description: "A web application for managing a departmental store",
     image: `${process.env.PUBLIC_URL}/images/projects/project4.png`,
     category: "Full-stack",
-    technologies: ["React", "Node.js", "MySQL"],
+    technologies: ["React.Js", "Express.js", "MySQL"],
     link: "https://example.com/project4",
     github: "https://github.com/baran0607/Department_Store"
   }
