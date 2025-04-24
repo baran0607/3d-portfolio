@@ -9,7 +9,7 @@ const projects = [
     image: `${process.env.PUBLIC_URL}/images/projects/project1.png`,
     category: "3D",
     technologies: ["React.Js", "Three.Js", "Motion Framer"],
-    link: "https://example.com/project1",
+    link: "https://baran0607.github.io/3d-portfolio/",
     github: "https://github.com/baran0607/3d-portfolio"
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     image: `${process.env.PUBLIC_URL}/images/projects/project2.png`,
     category: "Full-stack",
     technologies: ["React.Js", "Spring Boot", "Mysql"],
-    link: "https://example.com/project2",
+    link: "",
     github: "https://github.com/johndoe/project2"
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     image: `${process.env.PUBLIC_URL}/images/projects/project3.png`,
     category: "App",
     technologies: ["ReactNative", "Expo"],
-    link: "https://example.com/project3",
+    link: "",
     github: "https://github.com/baran0607/tracking"
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     image: `${process.env.PUBLIC_URL}/images/projects/project4.png`,
     category: "Full-stack",
     technologies: ["React.Js", "Express.js", "MySQL"],
-    link: "https://example.com/project4",
+    link: "",
     github: "https://github.com/baran0607/Department_Store"
   }
 ];
@@ -153,13 +153,15 @@ const ProjectsSection = () => {
                   </div>
                   
                   <div className="project-links">
+                  {selectedProject.link && selectedProject.link.trim() !== "" && (
                     <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="project-link">
                       Live Demo
                     </a>
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="project-link github">
-                      GitHub Repo
-                    </a>
-                  </div>
+                  )}
+                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="project-link github">
+                    GitHub Repo
+                  </a>
+                </div>
                 </div>
               </motion.div>
             </motion.div>
