@@ -31,7 +31,7 @@ const AboutSection = () => {
             className="about-text"
           >
             <p>
-              Hi there! I'm Baran, a passionate full-stack developer with 1+ years of experience
+              Hi there! I'm Baran, a passionate full-stack developer with 2+ years of experience
               building web applications and interactive experiences.
             </p>
             <p>
@@ -47,7 +47,7 @@ const AboutSection = () => {
             
             <div className="stats-container">
               <div className="stat-item">
-                <h3>1+</h3>
+                <h3>2+</h3>
                 <p>Years Experience</p>
               </div>
               <div className="stat-item">
