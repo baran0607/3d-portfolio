@@ -20,7 +20,7 @@ const projects = [
     category: "Full-stack",
     technologies: ["React.Js", "Spring Boot", "Mysql"],
     link: "",
-    github: "https://github.com/johndoe/project2"
+    github: "https://github.com/baran0607/Online-Exam-Portal"
   },
   {
     id: 3,
