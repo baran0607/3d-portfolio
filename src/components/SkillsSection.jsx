@@ -12,6 +12,7 @@ const SkillsSection = () => {
       { name: 'HTML/CSS', level: 90 },
       { name: 'Bootstrap', level: 85 },
       { name: 'JQuery', level: 85 },
+      { name: 'Laravel', level: 65 },
       { name: 'Framer Motion', level: 30 },
     ],
     backend: [
