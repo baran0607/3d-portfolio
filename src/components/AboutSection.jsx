@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
@@ -20,9 +20,12 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="about-image"
           >
-            <img src={`${process.env.PUBLIC_URL}/images/profile.png`} alt="John Doe" />
+            <img
+              src={`${process.env.PUBLIC_URL}/images/profile.png`}
+              alt="John Doe"
+            />
           </motion.div>
-          
+
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -31,23 +34,26 @@ const AboutSection = () => {
             className="about-text"
           >
             <p>
-              Hi there! I'm Baran, a passionate full-stack developer with 1+ years of experience
-              building web applications and interactive experiences.
+              Hi there! I'm Baran, a passionate full-stack developer with 1+
+              years of experience building web applications and interactive
+              experiences.
             </p>
             <p>
-              My journey in web development started when I was studying Electronics and Communication Engineering at Arunai Engineering College.
-              Since then, I've worked with various technologies and frameworks to create
-              scalable and user-friendly applications.
+              My journey in web development started when I was studying
+              Electronics and Communication Engineering at Arunai Engineering
+              College. Since then, I've worked with various technologies and
+              frameworks to create scalable and user-friendly applications.
             </p>
             <p>
-              I specialize in React.js, React Native focusing on creating immersive
-              3D experiences and performant web applications. When I'm not coding, you can find
-              me hiking,  or experimenting with new technologies.
+              I specialize in React.js, React Native focusing on creating
+              immersive 3D experiences and performant web applications. When I'm
+              not coding, you can find me hiking, or experimenting with new
+              technologies.
             </p>
-            
+
             <div className="stats-container">
               <div className="stat-item">
-                <h3>2+</h3>
+                <h3>1+</h3>
                 <p>Years Experience</p>
               </div>
               <div className="stat-item">
@@ -59,7 +65,7 @@ const AboutSection = () => {
                 <p>Happy Clients</p>
               </div>
             </div>
-            
+
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
